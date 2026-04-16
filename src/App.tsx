@@ -94,64 +94,109 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20 px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sleek-accent/10 text-sleek-accent text-xs font-bold uppercase tracking-widest mb-6 border border-sleek-accent/20">
-              <Globe className="w-3 h-3" />
-              Koko Suomen kattava palvelu
-            </div>
-            <h1 className="text-6xl md:text-7xl font-extrabold leading-[0.95] tracking-tighter mb-8 text-sleek-text">
-              Nosta Yrityksesi <br />
-              <span className="text-sleek-accent italic font-serif">Googlen</span> <br />
-              huipulle.
-            </h1>
-            <p className="text-xl text-sleek-dim mb-10 max-w-lg leading-relaxed">
-              Olemme suomalainen täyden palvelun digitoimisto. Autamme yrityksiä kasvattamaan myyntiä datalähtöisellä markkinoinnilla ja ensiluokkaisella SEO-strategialla.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 bg-sleek-accent text-sleek-bg rounded-md font-bold hover:brightness-110 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-sleek-accent/20">
-                Aloita tästä <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="px-8 py-4 bg-transparent border border-sleek-border text-sleek-text rounded-md font-bold hover:bg-sleek-surface transition-all cursor-pointer">
-                Katso hinnasto
-              </button>
-            </div>
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden">
+        {/* Background Branding Elements */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5">
+          <div className="absolute top-[20%] left-[-10%] text-[20vw] font-black leading-none select-none">SEO</div>
+          <div className="absolute bottom-[10%] right-[-5%] text-[15vw] font-black leading-none select-none">PROS</div>
+        </div>
+        
+        {/* Animated Glows */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-sleek-accent/10 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-indigo-500/10 blur-[120px] rounded-full" />
 
-            <div className="flex gap-12 mt-16">
-              {[
-                { label: "Keskim. Kasvu", val: "145%" },
-                { label: "Sijoitukset", val: "#1" },
-                { label: "Tekninen Tuki", val: "24/7" },
-              ].map((item, i) => (
-                <div key={i}>
-                  <div className="text-3xl font-extrabold text-sleek-text mb-1">{item.val}</div>
-                  <div className="text-[10px] uppercase tracking-widest text-sleek-dim font-bold">{item.label}</div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7"
+            >
+              <motion.div 
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sleek-accent/10 text-sleek-accent text-[10px] font-bold uppercase tracking-[0.2em] mb-8 border border-sleek-accent/20 backdrop-blur-sm"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                Huipputuloksia suomalaisille yrityksille
+              </motion.div>
+              
+              <h1 className="text-7xl md:text-8xl lg:text-[7.5rem] font-black leading-[0.82] tracking-[-0.04em] mb-10 text-sleek-text uppercase shadow-black">
+                Dominoi <br />
+                <span className="text-sleek-accent italic font-serif lowercase tracking-tighter">tuloksilla.</span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-sleek-dim mb-12 max-w-xl leading-relaxed font-medium">
+                Emme tarjoa vain klinikkauksia. Tarjoamme <span className="text-sleek-text">asiakasvirtaa</span>, joka muuttaa yrityksesi kasvun pysyväksi.
+              </p>
+              
+              <div className="flex flex-wrap gap-6 mb-16">
+                <button className="px-10 py-5 bg-sleek-accent text-sleek-bg rounded-lg font-black hover:brightness-110 transition-all flex items-center gap-3 cursor-pointer shadow-2xl shadow-sleek-accent/20 uppercase tracking-tighter text-lg group">
+                  Varaa ilmainen analyysi <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </button>
+                <button className="px-10 py-5 bg-transparent border-2 border-sleek-border text-sleek-text rounded-lg font-black hover:bg-sleek-surface transition-all cursor-pointer uppercase tracking-tighter text-lg">
+                  Palvelumme
+                </button>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 border-t border-sleek-border/50 pt-12">
+                {[
+                  { label: "Orgaaninen Kasvu", val: "145%", icon: <BarChart3 className="w-4 h-4 text-sleek-accent" /> },
+                  { label: "Google Rank #1", val: "+500", icon: <Target className="w-4 h-4 text-sleek-accent" /> },
+                  { label: "Asiantuntijat", val: "24/7", icon: <Users className="w-4 h-4 text-sleek-accent" /> },
+                ].map((item, i) => (
+                  <div key={i} className="group cursor-default">
+                    <div className="flex items-center gap-2 text-sleek-dim mb-2 uppercase text-[9px] font-bold tracking-widest group-hover:text-sleek-accent transition-colors">
+                      {item.icon} {item.label}
+                    </div>
+                    <div className="text-4xl font-black text-sleek-text">{item.val}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, rotate: 2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="lg:col-span-5 hidden lg:block"
+            >
+              <div className="relative group">
+                {/* Decorative Frame */}
+                <div className="absolute inset-0 bg-sleek-accent/20 rounded-[2.5rem] translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500" />
+                
+                <div className="aspect-[4/5] bg-sleek-surface rounded-[2rem] overflow-hidden relative border border-sleek-border shadow-2xl shadow-black">
+                  <img 
+                    src="https://picsum.photos/seed/strategy/1200/1500" 
+                    alt="SEO Strategy" 
+                    className="w-full h-full object-cover opacity-60 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-sleek-bg via-transparent to-sleek-bg/20" />
+                  
+                  {/* Floating Brand Label */}
+                  <div className="absolute bottom-10 left-10 right-10 p-8 rounded-2xl bg-black/60 backdrop-blur-xl border border-white/5">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-sleek-accent mb-2">Agency Vision</div>
+                    <div className="text-xl font-bold leading-tight">Datalähtöinen markkinointi on tulevaisuus.</div>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="aspect-square bg-sleek-surface rounded-3xl overflow-hidden relative border border-sleek-border shadow-2xl shadow-black/50">
-               <img 
-                src="https://picsum.photos/seed/seo-agency/1200/1200" 
-                alt="SEO Agency" 
-                className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-sleek-bg to-transparent opacity-60" />
+          {/* Partner Branding Section */}
+          <div className="mt-32 pt-12 border-t border-sleek-border/30">
+            <div className="text-[10px] font-bold text-sleek-dim uppercase tracking-[0.3em] mb-10 text-center">Luotettu kumppani huippubrändeille</div>
+            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:opacity-60 transition-opacity duration-500">
+               <div className="text-3xl font-black tracking-tighter italic">FINLAND_CORP</div>
+               <div className="text-2xl font-bold uppercase">NORDIC_SOLUTIONS</div>
+               <div className="text-3xl font-serif">HelsinkiDynamics</div>
+               <div className="text-2xl font-mono tracking-widest">ECO_FLOW</div>
+               <div className="text-3xl font-extrabold skew-x-[-10deg]">TECH_PRO</div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
